@@ -5,7 +5,7 @@
  * RS、R/W、Enabla 全て使用
  * 4bitモード
  * 色合いが若干おかしいので修正が必要
- * ver.1.2
+ * ver.2.0
  * ---------------------------------------------*/
 
 /*------------------------------------------------
@@ -135,7 +135,7 @@ void lcd_busywait(void)
   LCD_RW = 1;
 
   /* データビットを入力 */
-  TRISB = 0xFF;
+  TRISB  = 0xFF;
   ANSELH = 0x00;
 
   /* busy_flagのstatus調査 */
@@ -220,3 +220,18 @@ void lcd_setpos(int8_t x, int8_t y)
 
   return;
 }
+
+
+/*-----------------------------------------------
+ * lcd画面のクリア
+ *---------------------------------------------*/
+void lcd_clear(void)
+{
+  lcd_set_command(RS_MODE_COMMAND, 0x00);
+  __delay_ms(500);
+
+  return;
+}
+
+
+
