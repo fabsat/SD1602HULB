@@ -5,7 +5,7 @@
  * RS、R/W、Enabla 全て使用
  * 4bitモード
  * 色合いが若干おかしいので修正が必要
- * ver.2.0
+ * ver.3.0
  * ---------------------------------------------*/
 
 /*------------------------------------------------
@@ -136,7 +136,7 @@ void lcd_busywait(void)
 
   /* データビットを入力 */
   TRISB  = 0xFF;
-  ANSELH = 0x00;
+  ANSELH = 0x00;	// 入力はdigital
 
   /* busy_flagのstatus調査 */
   while(busy_flag){
@@ -158,7 +158,7 @@ void lcd_busywait(void)
 
 /*-----------------------------------------------
  * LCDにデータを1バイト出力する処理
- *    c : 出力する文字データ
+ *    data : 出力する文字データ
  *---------------------------------------------*/
 void lcd_putc(int8_t data)
 {
@@ -172,7 +172,7 @@ void lcd_putc(int8_t data)
 /*-----------------------------------------------
  * LCDに文字列データを出力する処理
  * (文字列をNULL(0x00)まで繰返し出力)
- *     s : 出力する文字列のデータ
+ *     str : 出力する文字列のデータ
  *---------------------------------------------*/
 void lcd_puts(const int8_t *str)
 {
@@ -192,7 +192,7 @@ void lcd_puts(const int8_t *str)
 int8_t *convert_int_into_string(const int value)
 {
   int8_t *str_p;
-  static int8_t str[256] = {'\0'};
+  static int8_t str[25] = {'\0'};
   sprintf(str, "%d", value);
 
   str_p = &str[0];
@@ -227,7 +227,7 @@ void lcd_setpos(int8_t x, int8_t y)
  *---------------------------------------------*/
 void lcd_clear(void)
 {
-  lcd_set_command(RS_MODE_COMMAND, 0x00);
+  lcd_set_command(RS_MODE_COMMAND, 0x01);
   __delay_ms(500);
 
   return;
