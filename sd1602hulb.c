@@ -50,7 +50,7 @@ void lcd_set_command(rs_mode_t mode, uint8_t data)
 /*-----------------------------------------------
  * PICの初期化
  *---------------------------------------------*/
-void pic_init(void)
+static void pic_init(void)
 {
   OSCCON  = 0x75;  //0b01110101
   TRISB   = 0x00;  //PORTBを出力設定
@@ -67,6 +67,9 @@ void pic_init(void)
  *---------------------------------------------*/
 void lcd_init()
 {
+  /* PICの初期化 */
+  pic_init();
+
   /* 信号をLowにする */
   LCD_RS = 0;
   LCD_RW = 0;

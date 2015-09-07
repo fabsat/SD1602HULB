@@ -1,10 +1,12 @@
 #ifndef _SD1602HULB_H_
 #define _SD1602HULB_H_
 
+#include <xc.h>
+
 
 /* クロックの設定 */
-#ifndef _XTAL_FREQ_
-#define _XTAL_FREQ_ (8000000)
+#ifndef _XTAL_FREQ
+#define _XTAL_FREQ (8000000)
 #endif
 
 
@@ -40,7 +42,6 @@ typedef unsigned char uint8_t;
 /* 関数プロトタイプ */
 void lcd_set_command_4bit(rs_mode_t mode, uint8_t data);
 void lcd_set_command(rs_mode_t mode, uint8_t data);
-void pic_init(void);
 void lcd_init(void);
 void lcd_busywait(void);
 void lcd_putc(int8_t data);//渡されるのがuint8_tなので修正が必要
