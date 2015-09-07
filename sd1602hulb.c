@@ -5,8 +5,24 @@
  * RS、R/W、Enabla 全て使用
  * 4bitモード
  * 色合いが若干おかしいので修正が必要
- * ver.1.0
+ * ver.1.1 
  * ---------------------------------------------*/
+
+/*------------------------------------------------
+ * 動作時のコンフィギュレーション設定
+ * FOSC  = INTRC_NOCLKOUT
+ * WDTE  = OFF
+ * PWRTE = OFF
+ * MCLRE = ON
+ * CP    = OFF
+ * CPD   = OFF
+ * BOREN = ON
+ * IESO  = OFF
+ * FCMEN = OFF
+ * LVP   = OFF
+ * BOR4V = BOR40V
+ * WRT   = OFF
+ *-----------------------------------------------*/
 
 #include <xc.h>
 #include "sd1602hulb.h"
