@@ -46,6 +46,7 @@ void lcd_init(void);
 void lcd_busywait(void);
 void lcd_putc(int8_t data);//渡されるのがuint8_tなので修正が必要
 void lcd_puts(const int8_t *str);//渡されれるのがuint8_tなので修正が必要
+int8_t *convert_int_into_string(const int value);
 void lcd_setpos(int8_t x, int8_t y);
 
 
