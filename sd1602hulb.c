@@ -2,6 +2,8 @@
  * For SD1602HULB
  * Using PIC16F886
  * 
+ * Hirofumi Hamada
+ *
  * RS、R/W、Enabla 全て使用
  * 4bitモード
  * 色合いが若干おかしいので修正が必要
