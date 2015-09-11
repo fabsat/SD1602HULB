@@ -3,21 +3,21 @@
  * 
  * Hirofumi Hamada
  *
- * ver.1.0
+ * ver.1.1
  * ---------------------------------------------*/
 #include "number_to_string.h"
 
 
 /* ASCIIコードの0の数値を定義 */
-#define ASCII_NUMBER_0 (0x30)
+#define ASCII_CODE_0 (0x30)
 
 /* 桁を分けるための境界値を定義 */
-#define MAX_100        (127)
-#define MIN_100        (100)
-#define MAX_10         (99)
-#define MIN_10         (10)
-#define MAX_1          (0)
-#define MIN_1          (9)
+#define MAX_100 (127)
+#define MIN_100 (100)
+#define MAX_10  (99)
+#define MIN_10  (10)
+#define MAX_1   (9)
+#define MIN_1   (0)
 
 /* prototype */
 static char *process_100(char num, int *flag, char *str);
@@ -32,7 +32,7 @@ char *number_to_string(char num)
 {
     static char str[8];
     int  flag = 0;
-    char *error_message = "number size is over";
+    char *error_message = "size of number is over";
     
     if(num < 0) {
         str[flag] = '-';
@@ -58,7 +58,7 @@ static char *process_100(char num, int *flag, char *str)
 {
     char remainder_100 = num % 100;
     
-    str[*flag] = ASCII_NUMBER_0 + 1;
+    str[*flag] = ASCII_CODE_0 + 1;
     (*flag)++;
     
     return process_10(remainder_100, flag, str);
@@ -72,7 +72,7 @@ static char *process_10(char num, int *flag, char *str)
 {
     int  divide_10    = (int)num / 10;
     char remainder_10 = num % 10;
-    char val        = ASCII_NUMBER_0;
+    char val          = ASCII_CODE_0;
     int  i;
     
     for(i = 0; i < divide_10; i++) {
@@ -92,7 +92,7 @@ static char *process_10(char num, int *flag, char *str)
 static char *process_1(char num, int *flag, char *str)
 {
     int  divide_1 = (int)num;
-    char val      = ASCII_NUMBER_0;
+    char val      = ASCII_CODE_0;
     int  i;
     
     for(i = 0; i < divide_1; i++) {
