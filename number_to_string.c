@@ -3,7 +3,7 @@
  * 
  * Hirofumi Hamada
  *
- * ver.1.1
+ * ver.1.2
  * ---------------------------------------------*/
 #include "number_to_string.h"
 
@@ -33,7 +33,10 @@ char *number_to_string(char num)
     static char str[8];
     int  flag = 0;
     char *error_message = "size of number is over";
-    
+
+	if(-MAX_100 > num && MAX_100 < num)
+	  return error_message;
+	  
     if(num < 0) {
         str[flag] = '-';
         flag++;
@@ -70,7 +73,7 @@ static char *process_100(char num, int *flag, char *str)
  *--------------------------------------*/
 static char *process_10(char num, int *flag, char *str)
 {
-    int  divide_10    = (int)num / 10;
+  int  divide_10    = (int)(num / 10);
     char remainder_10 = num % 10;
     char val          = ASCII_CODE_0;
     int  i;
