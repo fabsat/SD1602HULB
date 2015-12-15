@@ -27,9 +27,17 @@ static char *process_10(char num, int *p_flag, char *p_str);
 static char *process_1(char num, int *p_flag, char *p_str);
 
 
-/*-----------------------------------------
- * char型の数値を文字列へ変換
- *--------------------------------------*/
+
+/*=====================================================
+ * @brief
+ *     char型の数値を文字列へ変換
+ * @param
+ *     num:変換したい数値
+ * @return
+ *     str:変換した文字列を格納した配列へのポインタ
+ * @note
+ *     -128 ~ 127の数値
+ *===================================================*/
 char *char_number_to_string(char num)
 {
     static char str[5];
